@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Gradient from "../components/Gradient";
 import Link from "../components/Link";
+import Clock from "../components/Clock";
 
 const Home: NextPage = () => {
   return (
@@ -13,8 +14,10 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="py-16 leading-8 text-xl grid min-h-screen place-items-center">
-        <h1 className="text-6xl md:text-8xl text-center font-bold">
-          <Gradient text="clock" />
+        <h1 className="text-7xl md:text-9xl text-center font-bold">
+          <Gradient>
+            <Clock />
+          </Gradient>
         </h1>
       </main>
 
