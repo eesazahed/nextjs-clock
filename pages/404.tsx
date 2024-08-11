@@ -14,7 +14,7 @@ const Custom404: NextPage = () => {
 
       <main className="py-16 leading-8 text-xl grid min-h-screen place-items-center">
         <h1 className="my-8 text-6xl md:text-8xl text-center font-bold">
-          <Gradient text="Page not found" /> &#128557;
+          <Gradient children="Page not found" /> &#128557;
         </h1>
       </main>
 

@@ -1,7 +1,11 @@
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 
-const Clock: NextPage = () => {
+interface Props {
+  militaryTime: boolean;
+}
+
+const Clock: NextPage<Props> = ({ militaryTime }) => {
   const [time, setTime] = useState<Date>(new Date());
 
   useEffect(() => {
@@ -13,18 +17,27 @@ const Clock: NextPage = () => {
   }, []);
 
   const formatTime = (num: number) => num.toString().padStart(2, "0");
+  const formatHour = (hour: number) => {
+    if (militaryTime) {
+      return formatTime(hour);
+    }
+    const adjustedHour = hour % 12 || 12;
+    return formatTime(adjustedHour);
+  };
 
-  const displayHour = formatTime(time.getHours());
+  const displayHour = formatHour(time.getHours());
   const displayMin = formatTime(time.getMinutes());
   const displaySec = formatTime(time.getSeconds());
+
+  const ampm = time.getHours() >= 12 ? "pm" : "am";
 
   return (
     <span className="font-bold font-mono">
       {displayHour}
-      <span className="text-white animate-blink">:</span>
+      <span className="text-gray-300 dark:text-white animate-blink">:</span>
       {displayMin}
-      <span className="text-white animate-blink">:</span>
-      {displaySec}
+      <span className="text-gray-300 dark:text-white animate-blink">:</span>
+      {displaySec} {!militaryTime && <span className="text-6xl">{ampm}</span>}
     </span>
   );
 };

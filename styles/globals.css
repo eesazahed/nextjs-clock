@@ -21,7 +21,7 @@ a {
   }
   body {
     color: white;
-    background: black;
+    background: linear-gradient(to left top, #1a56fa, #1e0044);
   }
   a {
     color: #00f3a6;
